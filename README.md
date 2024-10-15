@@ -1,5 +1,5 @@
 
-# AI-Based Travel Planner
+# AI-Based Travel Planner (TravelTrail)
 
 An AI-powered travel planning application built using React, Gemini AI, and Firebase. This personalized app allows users to plan their trips by inputting details such as destination, number of travelers, number of days, budget, and more. The AI then suggests hotels, places to visit, and other travel-related information to help users create a comprehensive itinerary.
 
@@ -24,8 +24,8 @@ An AI-powered travel planning application built using React, Gemini AI, and Fire
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/ai-travel-planner.git
-    cd ai-travel-planner
+    git clone https://github.com/pawanbondre67/ai-based-travel-planner.git
+    cd ai-based-travel-planner
     ```
 
 2. Install dependencies:
@@ -44,7 +44,7 @@ An AI-powered travel planning application built using React, Gemini AI, and Fire
 
 5. Start the development server:
     ```bash
-    npm run dev (if using vite)
+    npm run dev 
     ```
 
 6. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
