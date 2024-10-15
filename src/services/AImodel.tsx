@@ -1,0 +1,39 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+  
+  const apiKey = "AIzaSyAroNcGT-MTNGUQxRDurnVC3XI32KiYlik";
+  const genAI = new GoogleGenerativeAI(apiKey);
+  
+  
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+  });
+  
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "application/json",
+  };
+  
+  
+   export const chatSession = model.startChat({
+      generationConfig,
+      history: [
+        {
+          role: "user",
+          parts: [
+            {text: "Generate Travel Plan for Location: Las Vegas, for 3 Days for Couple with a Cheap budget,Give me a Hotels options list with Hotel Name, Hotel address, Price, hotel image url, geo coordinates, rating, descriptions and suggest itinerary with placeName, Place Details, Place Image Url, Geo Coordinates, ticket Pricing,rating, Time  travel each of the location for 3 days with each day plan with best time to visit in JSON format.\n"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "```json\n{\n  \"hotelOptions\": [\n    {\n      \"hotelName\": \"The D Las Vegas\",\n      \"hotelAddress\": \"301 Fremont Street, Las Vegas, NV 89101\",\n      \"price\": \"$50-$100/night\",\n      \"hotelImageURL\": \"https://images.trvl-media.com/hotels/4000000/3998000/3997800/3997744/3997744_101_b.jpg\",\n      \"geoCoordinates\": \"36.1694, -115.1422\",\n      \"rating\": 4.0,\n      \"description\": \"A budget-friendly hotel located on Fremont Street, offering basic rooms, a casino, and access to the Fremont Street Experience.\"\n    },\n    {\n      \"hotelName\": \"Golden Nugget Las Vegas\",\n      \"hotelAddress\": \"129 E Fremont Street, Las Vegas, NV 89101\",\n      \"price\": \"$70-$150/night\",\n      \"hotelImageURL\": \"https://images.trvl-media.com/hotels/2000000/1999000/1998900/1998877/1998877_101_b.jpg\",\n      \"geoCoordinates\": \"36.1689, -115.1425\",\n      \"rating\": 4.5,\n      \"description\": \"A historic hotel on Fremont Street, known for its opulent decor, shark tank, and lively casino.\"\n    },\n    {\n      \"hotelName\": \"Circus Circus Hotel & Casino\",\n      \"hotelAddress\": \"2880 S Las Vegas Blvd, Las Vegas, NV 89109\",\n      \"price\": \"$40-$80/night\",\n      \"hotelImageURL\": \"https://images.trvl-media.com/hotels/3000000/2999000/2998900/2998856/2998856_101_b.jpg\",\n      \"geoCoordinates\": \"36.1119, -115.1715\",\n      \"rating\": 3.5,\n      \"description\": \"A budget-friendly hotel with a circus theme, offering affordable rooms, a large casino, and family-friendly entertainment.\"\n    }\n  ],\n  \"itinerary\": {\n    \"day1\": {\n      \"plan\": [\n        {\n          \"placeName\": \"Fremont Street Experience\",\n          \"placeDetails\": \"A pedestrian-friendly street with a canopy of lights, live music, street performers, and casinos.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/sites/default/files/styles/gallery_full/public/media/images/gallery/fremont-street-experience_3000.jpg?itok=9yG6W92t\",\n          \"geoCoordinates\": \"36.1689, -115.1425\",\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"2-3 hours\",\n          \"bestTimeToVisit\": \"Evening\"\n        },\n        {\n          \"placeName\": \"Golden Nugget\",\n          \"placeDetails\": \"A historic hotel and casino with a famous shark tank atrium. Explore the casino or have a drink at one of their bars.\",\n          \"placeImageURL\": \"https://www.goldennugget.com/las-vegas/images/hero-desktop/goldennugget-lasvegas-hero.jpg\",\n          \"geoCoordinates\": \"36.1689, -115.1425\",\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"1-2 hours\",\n          \"bestTimeToVisit\": \"Evening\"\n        },\n        {\n          \"placeName\": \"The Neon Museum\",\n          \"placeDetails\": \"A museum showcasing historic Las Vegas neon signs. Take a tour to learn about the city's history and see iconic signs up close.\",\n          \"placeImageURL\": \"https://www.neonmuseum.org/wp-content/uploads/2021/10/Neon-Museum-Header-Image.jpg\",\n          \"geoCoordinates\": \"36.1716, -115.1407\",\n          \"ticketPricing\": \"$25-$35\",\n          \"timeToTravel\": \"1-2 hours\",\n          \"bestTimeToVisit\": \"Afternoon\"\n        }\n      ]\n    },\n    \"day2\": {\n      \"plan\": [\n        {\n          \"placeName\": \"Bellagio Conservatory & Botanical Garden\",\n          \"placeDetails\": \"A free attraction featuring stunning floral displays that change seasonally.\",\n          \"placeImageURL\": \"https://www.bellagio.com/content/dam/mgmresorts/bellagio/images/hero-images/hero-conservatory-botanical-garden-4000x1500.jpg\",\n          \"geoCoordinates\": \"36.1151, -115.1733\",\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"1-2 hours\",\n          \"bestTimeToVisit\": \"Morning\"\n        },\n        {\n          \"placeName\": \"The Strip\",\n          \"placeDetails\": \"Las Vegas Boulevard, home to many famous casinos, hotels, and attractions. Walk along the Strip and enjoy the atmosphere.\",\n          \"placeImageURL\": \"https://www.visitlasvegas.com/sites/default/files/styles/gallery_full/public/media/images/gallery/the-strip-las-vegas.jpg?itok=r168f-4y\",\n          \"geoCoordinates\": \"36.1145, -115.1729\",\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"3-4 hours\",\n          \"bestTimeToVisit\": \"Evening\"\n        },\n        {\n          \"placeName\": \"Free Show at the Bellagio Fountains\",\n          \"placeDetails\": \"Enjoy the mesmerizing water and light show at the Bellagio Fountains.\",\n          \"placeImageURL\": \"https://www.bellagio.com/content/dam/mgmresorts/bellagio/images/hero-images/hero-fountains-show-4000x1500.jpg\",\n          \"geoCoordinates\": \"36.1151, -115.1733\",\n          \"ticketPricing\": \"Free\",\n          \"timeToTravel\": \"1-2 hours\",\n          \"bestTimeToVisit\": \"Evening\"\n        }\n      ]\n    },\n    \"day3\": {\n      \"plan\": [\n        {\n          \"placeName\": \"Hoover Dam\",\n          \"placeDetails\": \"A historic dam located about 30 miles from Las Vegas. Take a tour to learn about its construction and history.\",\n          \"placeImageURL\": \"https://www.nps.gov/articles/000/106487_332588.jpg\",\n          \"geoCoordinates\": \"36.0198, -114.8614\",\n          \"ticketPricing\": \"$30-$40 for a tour\",\n          \"timeToTravel\": \"4-5 hours (including travel time)\",\n          \"bestTimeToVisit\": \"Morning\"\n        },\n        {\n          \"placeName\": \"Red Rock Canyon National Conservation Area\",\n          \"placeDetails\": \"A scenic canyon with red sandstone cliffs, hiking trails, and rock climbing opportunities.\",\n          \"placeImageURL\": \"https://www.nps.gov/redr/planyourvisit/images/redrock2001.jpg\",\n          \"geoCoordinates\": \"36.1896, -115.3879\",\n          \"ticketPricing\": \"$7 per vehicle\",\n          \"timeToTravel\": \"2-3 hours\",\n          \"bestTimeToVisit\": \"Afternoon\"\n        }\n      ]\n    }\n  }\n}\n```\n\n**Notes:**\n\n* This itinerary is a suggestion and can be customized based on your interests and preferences. \n* The prices for hotel rooms and activities are approximate and can vary depending on the season and availability.\n* It is always advisable to book hotels and activities in advance, especially during peak seasons.\n* Las Vegas has a wide range of dining options. Consider trying local cuisine or exploring the many food halls and markets.\n\nThis itinerary focuses on free or low-cost activities. For a more luxurious experience, you could consider adding a show, a fancy dinner, or a spa treatment. \n"},
+          ],
+        },
+      ],
+    });
+  
+  
