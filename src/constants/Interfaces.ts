@@ -56,3 +56,13 @@ export interface UserSelection {
   export interface HotelCardItemProps {
     hotel: HotelOption;
   }
+
+
+  export interface User {
+    user: User;
+    email: string;
+    displayName: string;
+    apiKey : string;
+    photoURL: string;
+
+  }

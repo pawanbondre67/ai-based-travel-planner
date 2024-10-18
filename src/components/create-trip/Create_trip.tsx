@@ -66,14 +66,14 @@ function Create_trip() {
     toast({
       title: "Due to api issue , plz select the destination from dropdown",
     })
-  }, [formData, toast])
+  }, [toast])
 
   const login = async () => {
     try {
        const result= await signInWithPopup(auth, googleProvider);
         
        const user = result.user;
-       console.log(user); // This will log the user information
+      //  console.log(user); // This will log the user information
 
       // Extract access token
     // const idToken = await user.getIdToken(); // Ensure to await this as it returns a promise

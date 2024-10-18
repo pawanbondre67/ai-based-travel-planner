@@ -8,6 +8,7 @@ import Header from './components/custom/Header.tsx'
 // import { Toaster } from 'sonner'
 import { Toaster } from "@/components/ui/toaster"
 import ViewTrip from './components/view-trip/[tripId]/Index.tsx'
+import Mytrips from './components/my-trips/Mytrips.tsx'
 
 
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/view-trip/:tripId",
     element: <ViewTrip />
+  },
+  {
+    path: "/my-trips",
+    element : <Mytrips />
   }
 ]);
 
